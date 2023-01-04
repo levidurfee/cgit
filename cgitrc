@@ -1,0 +1,15 @@
+# use default logo and CSS
+css=/cgit-css/cgit.css
+logo=/cgit-css/cgit.png
+
+# set default repo readme file
+readme=README.md
+
+# allow repository cloning via HTTP
+enable-http-clone=1
+
+# enable Pygments syntax highlighting
+source-filter=/usr/lib/cgit/filters/syntax-highlighting.py
+
+# specify repository folder
+scan-path=/var/git
