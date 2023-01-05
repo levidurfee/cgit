@@ -13,7 +13,7 @@ COPY cgit.conf /etc/apache2/conf-available/cgit.conf
 COPY cgitrc /etc/cgitrc
 
 RUN a2enconf cgit
-RUN a2enmod cgid
+RUN a2enmod cgid rewrite
 
 EXPOSE 80
 CMD ["apache2ctl", "-D", "FOREGROUND"]

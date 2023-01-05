@@ -7,6 +7,7 @@ readme=README.md
 
 # allow repository cloning via HTTP
 enable-http-clone=1
+clone-url=https://git.levi.lol/$CGIT_REPO_URL
 
 # enable Pygments syntax highlighting
 source-filter=/usr/lib/cgit/filters/syntax-highlighting.py
