@@ -10,7 +10,9 @@ enable-http-clone=1
 clone-url=https://git.levi.lol/$CGIT_REPO_URL
 
 # enable Pygments syntax highlighting
-source-filter=/usr/lib/cgit/filters/syntax-highlighting.py
+# source-filter=/usr/lib/cgit/filters/syntax-highlighting.py
 
 # specify repository folder
+enable-filter-overrides=1
+
 scan-path=/var/git

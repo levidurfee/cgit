@@ -1,13 +1,22 @@
 FROM debian:11.6-slim
 RUN apt-get update &&  \
     apt-get install -y \
-    python3-pygments   \
     apache2            \
-    git                \
-    cgit
+    apache2-utils      \
+    python3-pygments   \
+    build-essential    \
+    libssl-dev         \
+    zlib1g-dev         \
+    git
 
-RUN apt install apache2-utils -y
-RUN apt clean
+WORKDIR /app
+RUN git clone https://git.zx2c4.com/cgit
+
+WORKDIR /app/cgit
+RUN git submodule init
+RUN git submodule update
+RUN make
+RUN make install
 
 COPY cgit.conf /etc/apache2/conf-available/cgit.conf
 COPY cgitrc /etc/cgitrc
