@@ -1,19 +1,19 @@
+# https://git.zx2c4.com/cgit/tree/cgitrc.5.txt
+
+js=
 css=/cgit-css/cgit.css
 logo=/cgit-css/cgit.png
-favicon=https://cdn.x6c.co/cgit/favicon.ico
-js=
+favicon=/cgit-css/favicon.ico
 
-# set default repo readme file
+enable-git-config=1
+enable-http-clone=1
+enable-filter-overrides=1
+
 readme=README.md
 
-# allow repository cloning via HTTP
-enable-http-clone=1
 clone-url=https://git.levi.lol/$CGIT_REPO_URL
 
 # enable Pygments syntax highlighting
 # source-filter=/usr/lib/cgit/filters/syntax-highlighting.py
-
-# specify repository folder
-enable-filter-overrides=1
 
 scan-path=/var/git
