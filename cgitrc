@@ -1,6 +1,7 @@
-# use default logo and CSS
 css=/cgit-css/cgit.css
 logo=/cgit-css/cgit.png
+favicon=https://cdn.x6c.co/cgit/favicon.ico
+js=
 
 # set default repo readme file
 readme=README.md
