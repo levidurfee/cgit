@@ -1,8 +1,8 @@
 FROM debian:11.6-slim
 RUN apt-get update &&  \
     apt-get install -y \
-    apache2            \
-    apache2-utils      \
+    nginx              \
+    fcgiwrap           \
     python3-pygments   \
     build-essential    \
     libssl-dev         \
@@ -18,12 +18,10 @@ RUN git submodule update
 RUN make
 RUN make install
 
-COPY cgit.conf /etc/apache2/conf-available/cgit.conf
+COPY nginx.conf /etc/nginx/nginx.conf
 COPY cgitrc /etc/cgitrc
 COPY favicon.ico /var/www/htdocs/cgit/favicon.ico
-
-RUN a2enconf cgit
-RUN a2enmod cgid rewrite
+COPY 40-fcgiwrap.sh /docker-entrypoint.d/40-fcgiwrap.sh
 
 EXPOSE 80
-CMD ["apache2ctl", "-D", "FOREGROUND"]
+CMD ["nginx", "-g", "daemon off;"]
