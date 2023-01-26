@@ -1,5 +1,9 @@
-#!/bin/bash
+#!/bin/sh
 
-spawn-fcgi -s /var/run/fcgiwrap.socket -M 766 /usr/sbin/fcgiwrap
+# # start fastcgi_wrap
+echo "Starting fcgiwrap..."
+/usr/bin/spawn-fcgi -p 9000 /usr/sbin/fcgiwrap &
 
-nginx -g
+# # start nginx
+echo "Starting nginx..."
+nginx -g 'daemon off;'

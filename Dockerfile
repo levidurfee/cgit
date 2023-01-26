@@ -1,27 +1,25 @@
-FROM debian:11.6-slim
-RUN apt-get update &&  \
-    apt-get install -y \
-    nginx              \
-    fcgiwrap           \
-    python3-pygments   \
-    build-essential    \
-    libssl-dev         \
-    zlib1g-dev         \
-    git
+FROM debian:11-slim
 
-WORKDIR /app
-RUN git clone https://git.zx2c4.com/cgit
+RUN apt update && apt install -y \
+    build-essential \
+    libssl-dev      \
+    zlib1g-dev      \
+    git             \
+    fcgiwrap        \
+    spawn-fcgi      \
+    nginx
 
-WORKDIR /app/cgit
-RUN git submodule init
-RUN git submodule update
-RUN make
-RUN make install
+WORKDIR /build
+RUN git clone --depth 1 https://git.zx2c4.com/cgit
 
-COPY nginx.conf /etc/nginx/nginx.conf
+WORKDIR /build/cgit
+RUN git submodule init && git submodule update
+RUN make && make install
+
 COPY cgitrc /etc/cgitrc
-COPY favicon.ico /var/www/htdocs/cgit/favicon.ico
-COPY 40-fcgiwrap.sh /docker-entrypoint.d/40-fcgiwrap.sh
+COPY nginx.conf /etc/nginx/sites-enabled/default
+COPY entrypoint.sh /build/entrypoint.sh
 
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+
+CMD ["/build/entrypoint.sh"]

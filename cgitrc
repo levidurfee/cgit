@@ -1,9 +1,9 @@
 # https://git.zx2c4.com/cgit/tree/cgitrc.5.txt
 
 js=
-css=/cgit-css/cgit.css
-logo=/cgit-css/cgit.png
-favicon=/cgit-css/favicon.ico
+css=/cgit.css
+logo=/cgit.png
+favicon=/favicon.ico
 
 enable-git-config=1
 enable-http-clone=1
