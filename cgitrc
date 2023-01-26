@@ -17,3 +17,5 @@ clone-url=https://git.levi.lol/$CGIT_REPO_URL
 # source-filter=/usr/lib/cgit/filters/syntax-highlighting.py
 
 scan-path=/var/git
+
+virtual-root=/
